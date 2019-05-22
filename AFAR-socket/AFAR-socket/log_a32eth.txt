@@ -1,0 +1,53 @@
+using a32eth.dll ver. 20.06.17
+------- START READING -------
+A. pars start
+B. pars finished
+1. before send
+2. after send
+3. before recv
+---- 3.1 start recv
+---- 3.2 start recv while
+---- 3.3 recv
+---- 3.4 finish recv bad
+4. after recv ---------- bad
+1. before send
+2. after send
+3. before recv
+---- 3.1 start recv
+---- 3.2 start recv while
+---- 3.3 recv
+---- 3.4 finish recv bad
+4. after recv ---------- bad
+1. before send
+2. after send
+3. before recv
+---- 3.1 start recv
+---- 3.2 start recv while
+---- 3.3 recv
+---- 3.4 finish recv bad
+4. after recv ---------- bad
+1. before send
+2. after send
+3. before recv
+---- 3.1 start recv
+---- 3.2 start recv while
+---- 3.3 recv
+---- 3.4 finish recv bad
+4. after recv ---------- bad
+1. before send
+2. after send
+3. before recv
+---- 3.1 start recv
+---- 3.2 start recv while
+---- 3.3 recv
+---- 3.4 finish recv bad
+4. after recv ---------- bad
+1. before send
+2. after send
+3. before recv
+---- 3.1 start recv
+---- 3.2 start recv while
+---- 3.3 recv
+---- 3.4 finish recv bad
+4. after recv ---------- bad
+no answer all attempts

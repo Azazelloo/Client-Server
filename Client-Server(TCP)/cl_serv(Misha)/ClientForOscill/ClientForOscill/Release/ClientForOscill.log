@@ -1,0 +1,10 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (ServerForOscill.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Connection.cpp
+  main.cpp
+  Создание кода
+  19 of 20 functions (95.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  ClientForOscill.vcxproj -> C:\Users\Granit\Documents\Visual Studio 2015\Projects\Cl_Serv\ClientForOscill\Release\ClientForOscill.exe
+  ClientForOscill.vcxproj -> C:\Users\Granit\Documents\Visual Studio 2015\Projects\Cl_Serv\ClientForOscill\Release\ClientForOscill.pdb (Full PDB)

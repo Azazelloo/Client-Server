@@ -1,0 +1,4 @@
+﻿  connection.cpp
+c:\users\azazello\desktop\afar\client-server\client_new\client_new\client_new\connection.cpp(10): warning C4101: ret_val: неиспользованная локальная переменная
+c:\users\azazello\desktop\afar\client-server\client_new\client_new\client_new\connection.cpp(32): warning C4101: hst: неиспользованная локальная переменная
+  Client_new.vcxproj -> C:\Users\Azazello\Desktop\AFAR\Client-Server\Client_new\Client_new\Debug\Client.exe

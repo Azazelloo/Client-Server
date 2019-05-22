@@ -1,0 +1,8 @@
+﻿  main.cpp
+c:\users\azazello\desktop\afar\afar_socket_new\afar_socket_new\afar_socket_new\main.cpp(8): warning C4101: ip_addrs: неиспользованная локальная переменная
+  Создание кода
+  9 of 9 functions (100.0%) were compiled.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  AFAR_socket_new.vcxproj -> C:\Users\Azazello\Desktop\AFAR\AFAR_socket_new\AFAR_socket_new\Release\AFAR_socket_new.exe

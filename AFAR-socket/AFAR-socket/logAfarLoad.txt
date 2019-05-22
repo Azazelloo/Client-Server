@@ -1,0 +1,67 @@
+start for 17 thread 
+14:37:56.253 try connect 1024 
+14:37:56.253 try connect 1025 
+14:37:56.253 try connect 1026 
+14:37:56.253 try connect 1027 
+14:37:56.253 try connect 1028 
+14:37:56.253 try connect 1029 
+14:37:56.253 try connect 1030 
+14:37:56.253 try connect 1031 
+14:37:56.253 try connect 1032 
+14:37:56.253 try connect 1033 
+14:37:56.253 try connect 1034 
+14:37:56.253 try connect 1035 
+14:37:56.253 try connect 1036 
+14:37:56.253 try connect 1037 
+14:37:56.253 try connect 1038 
+14:37:56.253 try connect 1039 
+14:37:56.253 try connect 1040 
+14:37:56.628 not connected 1036 
+14:37:56.628 not connected 1040 
+14:37:56.628 not connected 1024 
+14:37:56.628 not connected 1035 
+14:37:56.628 not connected 1038 
+14:37:56.628 not connected 1037 
+14:37:56.628 not connected 1034 
+14:37:56.628 not connected 1029 
+14:37:56.628 not connected 1028 
+14:37:56.628 not connected 1039 
+14:37:56.628 not connected 1032 
+14:37:56.628 not connected 1033 
+14:37:56.628 not connected 1025 
+14:37:56.628 not connected 1031 
+14:37:56.628 not connected 1026 
+14:37:56.628 not connected 1030 
+14:37:56.628 not connected 1027 
+14:37:57.050 try disconnect 1025 
+14:37:57.050 disconnected 1025 
+14:37:57.097 try disconnect 1026 
+14:37:57.097 disconnected 1026 
+14:37:57.128 try disconnect 1027 
+14:37:57.128 disconnected 1027 
+14:37:57.160 try disconnect 1028 
+14:37:57.160 disconnected 1028 
+14:37:57.191 try disconnect 1029 
+14:37:57.191 disconnected 1029 
+14:37:57.222 try disconnect 1030 
+14:37:57.222 disconnected 1030 
+14:37:57.238 try disconnect 1031 
+14:37:57.238 disconnected 1031 
+14:37:57.269 try disconnect 1032 
+14:37:57.269 disconnected 1032 
+14:37:57.269 try disconnect 1033 
+14:37:57.269 disconnected 1033 
+14:37:57.316 try disconnect 1034 
+14:37:57.316 disconnected 1034 
+14:37:57.347 try disconnect 1035 
+14:37:57.347 disconnected 1035 
+14:37:57.378 try disconnect 1036 
+14:37:57.378 disconnected 1036 
+14:37:57.409 try disconnect 1037 
+14:37:57.409 disconnected 1037 
+14:37:57.425 try disconnect 1038 
+14:37:57.425 disconnected 1038 
+14:37:57.472 try disconnect 1039 
+14:37:57.472 disconnected 1039 
+14:37:57.488 try disconnect 1040 
+14:37:57.488 disconnected 1040 

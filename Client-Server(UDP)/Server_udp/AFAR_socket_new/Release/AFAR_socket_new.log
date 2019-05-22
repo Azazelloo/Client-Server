@@ -1,0 +1,7 @@
+﻿  connection.cpp
+c:\users\azazello\desktop\afar\client-server(udp)\server_udp\afar_socket_new\connection.cpp(9): warning C4101: addr: неиспользованная локальная переменная
+  main.cpp
+  Создание кода
+  All 52 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  AFAR_socket_new.vcxproj -> C:\Users\Azazello\Desktop\AFAR\Client-Server(UDP)\Server_udp\Release\Server.exe

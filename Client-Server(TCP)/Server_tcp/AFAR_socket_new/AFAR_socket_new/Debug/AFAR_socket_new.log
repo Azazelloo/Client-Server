@@ -1,0 +1,5 @@
+﻿  main.cpp
+c:\users\azazello\desktop\afar\afar_socket_new\afar_socket_new\afar_socket_new\main.cpp(13): warning C4101: buf: неиспользованная локальная переменная
+c:\users\azazello\desktop\afar\afar_socket_new\afar_socket_new\afar_socket_new\main.cpp(9): warning C4101: port_array: неиспользованная локальная переменная
+c:\users\azazello\desktop\afar\afar_socket_new\afar_socket_new\afar_socket_new\main.cpp(8): warning C4101: ip_addrs: неиспользованная локальная переменная
+  AFAR_socket_new.vcxproj -> C:\Users\Azazello\Desktop\AFAR\AFAR_socket_new\AFAR_socket_new\Debug\AFAR_socket_new.exe

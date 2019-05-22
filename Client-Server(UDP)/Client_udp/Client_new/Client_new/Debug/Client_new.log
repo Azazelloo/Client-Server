@@ -1,0 +1,3 @@
+﻿  connection.cpp
+c:\users\azazello\desktop\afar\client-server(udp)\client_udp\client_new\client_new\connection.cpp(10): warning C4101: ret_val: неиспользованная локальная переменная
+  Client_new.vcxproj -> C:\Users\Azazello\Desktop\AFAR\Client-Server(UDP)\Client_udp\Client_new\Debug\Client.exe

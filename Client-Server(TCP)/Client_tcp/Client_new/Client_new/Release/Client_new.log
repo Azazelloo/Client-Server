@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\azazello\desktop\afar\client-server\client_new\client_new\client_new\main.cpp(40): error C2660: sendto: функция не принимает 4 аргументов
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(2100): note:  см. объявление "sendto"
