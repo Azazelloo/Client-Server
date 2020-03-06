@@ -1,34 +1,34 @@
-#include "Header.h"
+п»ї#include "Header.h"
 
 int connectionServer(DEVICE* obj_dev)//const char* adress, int& port, SOCKET* my_sock)
 {
-	//////////Серверная часть
+	//////////РЎРµСЂРІРµСЂРЅР°СЏ С‡Р°СЃС‚СЊ
 	setlocale(LC_ALL, "Russian");
-	cout << "Ожидание соединения..." << endl;
+	cout << "РћР¶РёРґР°РЅРёРµ СЃРѕРµРґРёРЅРµРЅРёСЏ..." << endl;
 	WSADATA ws;
 	sockaddr_in addr;
 	int ret_val;
 
-	if (FAILED(WSAStartup(MAKEWORD(2,2), &ws))) //инициализация Winsock
+	if (FAILED(WSAStartup(MAKEWORD(2,2), &ws))) //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Winsock
 	{
 		cout << "WSAStart error: " << WSAGetLastError() << endl;
 		WSACleanup();
 		return -1;
 	}
 	//SOCKET serverSock TCP
-	SOCKET serverSock = socket(AF_INET, SOCK_STREAM, 0); //создание сокета SOCK_STREAM - TCP, SOCK_DGRAM - UDP
+	SOCKET serverSock = socket(AF_INET, SOCK_STREAM, 0); //СЃРѕР·РґР°РЅРёРµ СЃРѕРєРµС‚Р° SOCK_STREAM - TCP, SOCK_DGRAM - UDP
 	stop
-	if (serverSock==INVALID_SOCKET)//проверяем создание сокета
+	if (serverSock==INVALID_SOCKET)//РїСЂРѕРІРµСЂСЏРµРј СЃРѕР·РґР°РЅРёРµ СЃРѕРєРµС‚Р°
 	{
 		cout << "Socket error 1:" << WSAGetLastError() << endl;
 		return -1;
 	}
 
-	SOCKADDR_IN sin; //структура описания сокета
-	sin.sin_family = AF_INET; //формат адреса IPv4
-	sin.sin_addr.s_addr = inet_addr(obj_dev->adress);//htonl(INADDR_ANY);//адрес
-	sin.sin_port = htons(obj_dev->port);// порт
-	ret_val = bind(serverSock, (struct sockaddr*)& sin, sizeof(sin));// присвоение сокету имени
+	SOCKADDR_IN sin; //СЃС‚СЂСѓРєС‚СѓСЂР° РѕРїРёСЃР°РЅРёСЏ СЃРѕРєРµС‚Р°
+	sin.sin_family = AF_INET; //С„РѕСЂРјР°С‚ Р°РґСЂРµСЃР° IPv4
+	sin.sin_addr.s_addr = inet_addr(obj_dev->adress);//htonl(INADDR_ANY);//Р°РґСЂРµСЃ
+	sin.sin_port = htons(obj_dev->port);// РїРѕСЂС‚
+	ret_val = bind(serverSock, (struct sockaddr*)& sin, sizeof(sin));// РїСЂРёСЃРІРѕРµРЅРёРµ СЃРѕРєРµС‚Сѓ РёРјРµРЅРё
 	stop
 	if (ret_val == SOCKET_ERROR)
 	{
@@ -43,19 +43,19 @@ int connectionServer(DEVICE* obj_dev)//const char* adress, int& port, SOCKET* my
 	recvfrom(serverSock,buff,128,0, (struct sockaddr*)& from, &from_len );
 	stop*/
 	// TCP
-	//начинаем слушать сокет
-	ret_val = listen(serverSock,10); //сокет ожидает запросы на связь с ним, 10- сколько одновременно запросов может быть принято
+	//РЅР°С‡РёРЅР°РµРј СЃР»СѓС€Р°С‚СЊ СЃРѕРєРµС‚
+	ret_val = listen(serverSock,10); //СЃРѕРєРµС‚ РѕР¶РёРґР°РµС‚ Р·Р°РїСЂРѕСЃС‹ РЅР° СЃРІСЏР·СЊ СЃ РЅРёРј, 10- СЃРєРѕР»СЊРєРѕ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ Р·Р°РїСЂРѕСЃРѕРІ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСЂРёРЅСЏС‚Рѕ
 	if (ret_val == SOCKET_ERROR)
 	{
 		cout << "Socket error 3:" << WSAGetLastError() << endl;
 		WSACleanup();
 		return -1;
 	}
-	//ждем клиент
+	//Р¶РґРµРј РєР»РёРµРЅС‚
 	SOCKET clientSock;
 	SOCKADDR_IN from;
 	int fromlen = sizeof(from);
-	clientSock = accept(serverSock, (sockaddr*)&from, &fromlen);//принять соединение на сокете
+	clientSock = accept(serverSock, (sockaddr*)&from, &fromlen);//РїСЂРёРЅСЏС‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ РЅР° СЃРѕРєРµС‚Рµ
 
 	if (serverSock == INVALID_SOCKET)
 	{
@@ -65,7 +65,7 @@ int connectionServer(DEVICE* obj_dev)//const char* adress, int& port, SOCKET* my
 	*obj_dev->sock_dev = clientSock;
 	/////////////////////
 	in_addr ip_address = ((sockaddr_in)from).sin_addr;
-	printf("Принято соединение от %s, порт %d\n", inet_ntoa(ip_address), obj_dev->port);
+	printf("РџСЂРёРЅСЏС‚Рѕ СЃРѕРµРґРёРЅРµРЅРёРµ РѕС‚ %s, РїРѕСЂС‚ %d\n", inet_ntoa(ip_address), obj_dev->port);
 	stop
 	//////////
 	return 1;

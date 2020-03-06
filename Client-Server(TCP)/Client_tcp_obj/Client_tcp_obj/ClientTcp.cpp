@@ -1,4 +1,4 @@
-#include "Header.h"
+п»ї#include "Header.h"
 
 ClientTcp::ClientTcp(const char* addr,int port, SOCKET* sock):m_port(port),m_sock(sock)
 {
@@ -20,7 +20,7 @@ int ClientTcp::Connect()
 	HOSTENT* hst;
 	int ret_val;
 
-	if (FAILED(WSAStartup(MAKEWORD(2, 2), &ws))) //инициализация Winsock
+	if (FAILED(WSAStartup(MAKEWORD(2, 2), &ws))) //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Winsock
 	{
 		cout << "WSAStart error: " << WSAGetLastError() << endl;
 		WSACleanup();
@@ -28,16 +28,16 @@ int ClientTcp::Connect()
 	}
 
 	//SOCKET clientSocket;
-	*m_sock = socket(AF_INET, SOCK_STREAM, 0); //создание сокета SOCK_STREAM - TCP, SOCK_DGRAM - UDP
-	if (*m_sock == INVALID_SOCKET) //создаем сокет
+	*m_sock = socket(AF_INET, SOCK_STREAM, 0); //СЃРѕР·РґР°РЅРёРµ СЃРѕРєРµС‚Р° SOCK_STREAM - TCP, SOCK_DGRAM - UDP
+	if (*m_sock == INVALID_SOCKET) //СЃРѕР·РґР°РµРј СЃРѕРєРµС‚
 	{
 		cout << "Socket error 1:" << WSAGetLastError() << endl;
 		return -1;
 	}
-	else //устанавливаем соединение
+	else //СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃРѕРµРґРёРЅРµРЅРёРµ
 	{
 		sock_addr.sin_family = AF_INET;
-		sock_addr.sin_port = htons(m_port); //переводим порт из обычного представления в TCP/IP
+		sock_addr.sin_port = htons(m_port); //РїРµСЂРµРІРѕРґРёРј РїРѕСЂС‚ РёР· РѕР±С‹С‡РЅРѕРіРѕ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ РІ TCP/IP
 		sock_addr.sin_addr.s_addr = inet_addr(m_server_addr);
 
 		if (connect(*m_sock, (sockaddr*)& sock_addr, sizeof(sock_addr)) == SOCKET_ERROR)

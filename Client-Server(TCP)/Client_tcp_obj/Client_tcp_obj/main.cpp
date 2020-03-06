@@ -1,4 +1,4 @@
-#include "Header.h"
+п»ї#include "Header.h"
 
 int main(int argc, char* argv[])
 {
@@ -6,7 +6,7 @@ int main(int argc, char* argv[])
 	ClientTcp conection_1("192.168.0.16", 4554, &sock_1);
 	conection_1.Connect();
 
-	/////////////запрос->ответ сервера
+	/////////////Р·Р°РїСЂРѕСЃ->РѕС‚РІРµС‚ СЃРµСЂРІРµСЂР°
 	char command[] = "String test";
 	char read_buffer[128];
 	send(sock_1, command, strlen(command), 0);

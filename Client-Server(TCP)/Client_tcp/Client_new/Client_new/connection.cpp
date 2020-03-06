@@ -1,32 +1,32 @@
-#include "Header.h"
+п»ї#include "Header.h"
 
 int connectionClient(DEVICE* obj_dev)//const char* adress, int& port, SOCKET* my_sock)
 {
-	//////////Клиентская часть
+	//////////РљР»РёРµРЅС‚СЃРєР°СЏ С‡Р°СЃС‚СЊ
 	setlocale(LC_ALL, "Russian");
-	cout << "Ожидание соединения..." << endl;
+	cout << "РћР¶РёРґР°РЅРёРµ СЃРѕРµРґРёРЅРµРЅРёСЏ..." << endl;
 	WSADATA ws;
 	sockaddr_in addr;
 	int ret_val;
 
-	if (FAILED(WSAStartup(MAKEWORD(2, 2), &ws))) //инициализация Winsock
+	if (FAILED(WSAStartup(MAKEWORD(2, 2), &ws))) //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Winsock
 	{
 		cout << "WSAStart error: " << WSAGetLastError() << endl;
 		WSACleanup();
 		return -1;
 	}
 	SOCKET clientSocket;
-	clientSocket= socket(AF_INET, SOCK_STREAM, 0); //создание сокета SOCK_STREAM - TCP, SOCK_DGRAM - UDP
-	if (clientSocket == INVALID_SOCKET) //создаем сокет
+	clientSocket= socket(AF_INET, SOCK_STREAM, 0); //СЃРѕР·РґР°РЅРёРµ СЃРѕРєРµС‚Р° SOCK_STREAM - TCP, SOCK_DGRAM - UDP
+	if (clientSocket == INVALID_SOCKET) //СЃРѕР·РґР°РµРј СЃРѕРєРµС‚
 	{
 		cout << "Socket error 1:" << WSAGetLastError() << endl;
 		return -1;
 	}
-	else //устанавливаем соединение
+	else //СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃРѕРµРґРёРЅРµРЅРёРµ
 	{
-		//ZeroMemory(&addr, sizeof(addr)); //заполняем память нулями
+		//ZeroMemory(&addr, sizeof(addr)); //Р·Р°РїРѕР»РЅСЏРµРј РїР°РјСЏС‚СЊ РЅСѓР»СЏРјРё
 		addr.sin_family = AF_INET;
-		addr.sin_port = htons(obj_dev->port); //переводим порт из обычного представления в TCP/IP
+		addr.sin_port = htons(obj_dev->port); //РїРµСЂРµРІРѕРґРёРј РїРѕСЂС‚ РёР· РѕР±С‹С‡РЅРѕРіРѕ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ РІ TCP/IP
 
 		//TCP
 		HOSTENT* hst;
@@ -34,7 +34,7 @@ int connectionClient(DEVICE* obj_dev)//const char* adress, int& port, SOCKET* my
 		{
 			addr.sin_addr.s_addr = inet_addr(obj_dev->adress);
 		}
-		/*else //пытаемся получить адрес через имя хоста
+		/*else //РїС‹С‚Р°РµРјСЃСЏ РїРѕР»СѓС‡РёС‚СЊ Р°РґСЂРµСЃ С‡РµСЂРµР· РёРјСЏ С…РѕСЃС‚Р°
 		{
 			if (hst = gethostbyname(obj_dev->adress))
 			{
@@ -57,8 +57,8 @@ int connectionClient(DEVICE* obj_dev)//const char* adress, int& port, SOCKET* my
 		}
 		stop
 		*obj_dev->sock_dev = clientSocket;
-		printf("Установлено соединение с %s, порт %d\n", obj_dev->adress, obj_dev->port);
-		//////////////////////////////////////////////Обмен командами
+		printf("РЈСЃС‚Р°РЅРѕРІР»РµРЅРѕ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ %s, РїРѕСЂС‚ %d\n", obj_dev->adress, obj_dev->port);
+		//////////////////////////////////////////////РћР±РјРµРЅ РєРѕРјР°РЅРґР°РјРё
 		char message[] = "111111";
 		for(int i=0;i<10;i++)
 		{

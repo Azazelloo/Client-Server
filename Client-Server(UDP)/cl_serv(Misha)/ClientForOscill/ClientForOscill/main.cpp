@@ -1,4 +1,4 @@
-#pragma comment(lib, "ws2_32.lib")
+п»ї#pragma comment(lib, "ws2_32.lib")
 
 #include <WinSock2.h>
 #include <iostream>
@@ -11,19 +11,19 @@ bool IsQuestion(char *RecvBuffer);
 
 int main() {
 	GetDir();
-	char SendBuffer[massSize] = { 0 }; //для отправки сообщения серверу
-	char RecvBuffer[massSize] = ""; //для принятия сообщения от сервера
+	char SendBuffer[massSize] = { 0 }; //РґР»СЏ РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ СЃРµСЂРІРµСЂСѓ
+	char RecvBuffer[massSize] = ""; //РґР»СЏ РїСЂРёРЅСЏС‚РёСЏ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚ СЃРµСЂРІРµСЂР°
 	int i;
 
 	setlocale(LC_ALL, "Russian");
 	if (ConnectDetection(namedir)) {
-		std::cout << "Соединение не было установлено!\n";
+		std::cout << "РЎРѕРµРґРёРЅРµРЅРёРµ РЅРµ Р±С‹Р»Рѕ СѓСЃС‚Р°РЅРѕРІР»РµРЅРѕ!\n";
 		return 1;
 	}
 	while (strcmp(SendBuffer, "CLCONNECT")) {
 		memset(SendBuffer, 0, sizeof(RecvBuffer));
 		memset(RecvBuffer, 0, sizeof(RecvBuffer));
-		printf("Введите команду: ");
+		printf("Р’РІРµРґРёС‚Рµ РєРѕРјР°РЅРґСѓ: ");
 		std::cin.getline(SendBuffer, massSize);
 
 		for (i = sizeof(SendBuffer) - 1; i >= 0; i--) {
@@ -36,16 +36,16 @@ int main() {
 		MessageSending(SendBuffer);
 		if (IsQuestion(SendBuffer)) {
 			MessageReceiving(RecvBuffer);
-			std::cout << "Ответ:		" << RecvBuffer << "\n";
+			std::cout << "РћС‚РІРµС‚:		" << RecvBuffer << "\n";
 		}
 	}
 	ConnectClose();
-	std::cout << "Соединение закрыто\n";
+	std::cout << "РЎРѕРµРґРёРЅРµРЅРёРµ Р·Р°РєСЂС‹С‚Рѕ\n";
 
 	return 0;
 }
 
-void GetDir() { //Запись директории ini-файла
+void GetDir() { //Р—Р°РїРёСЃСЊ РґРёСЂРµРєС‚РѕСЂРёРё ini-С„Р°Р№Р»Р°
 	char name[massSize * 2] = { 0 };
 
 	int j = GetModuleFileName(GetModuleHandle(NULL), (LPWSTR)name, massSize) - 1;
@@ -65,7 +65,7 @@ void GetDir() { //Запись директории ini-файла
 	}
 }
 
-bool IsQuestion(char *SendBuffer) { //устанавливает, есть ли в сообщении знак вопроса
+bool IsQuestion(char *SendBuffer) { //СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚, РµСЃС‚СЊ Р»Рё РІ СЃРѕРѕР±С‰РµРЅРёРё Р·РЅР°Рє РІРѕРїСЂРѕСЃР°
 	for (int i = 0; i <= massSize; i++)
 		if (SendBuffer[i] == '?')
 			return true;

@@ -1,5 +1,5 @@
-////////////////////////////////////////////////////////////////
-//////Для установки соединения в качестве сервера///////////////
+п»ї////////////////////////////////////////////////////////////////
+//////Р”Р»СЏ СѓСЃС‚Р°РЅРѕРІРєРё СЃРѕРµРґРёРЅРµРЅРёСЏ РІ РєР°С‡РµСЃС‚РІРµ СЃРµСЂРІРµСЂР°///////////////
 ////////////////////////////////////////////////////////////////
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <WinSock2.h>
@@ -26,13 +26,13 @@ bool ConnectDetection(char *namedir) {
 	
 	GetPrivateProfileStringA((LPCSTR) "IP", (LPCSTR) "0", (LPCSTR) "ERROR", (LPSTR)SERVERADDR, (DWORD) sizeof(SERVERADDR), (LPCSTR)namedir);
 	PORT = GetPrivateProfileIntA((LPCSTR) "PORT", (LPCSTR) "0", 100, (LPCSTR)namedir);
-	addr_info.s = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); // SOCK_STREAM - взаимодействие с установкой соединения, AF_INET - TCP/IP
+	addr_info.s = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); // SOCK_STREAM - РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ СЃ СѓСЃС‚Р°РЅРѕРІРєРѕР№ СЃРѕРµРґРёРЅРµРЅРёСЏ, AF_INET - TCP/IP
 	SOCKADDR_IN sin;
 
-	sin.sin_family = AF_INET; // определяет используемый формат адреса (AF_INET - дл¤ TCP/IP)
-	sin.sin_addr.s_addr = inet_addr(SERVERADDR);//INADDR_ANY; //адрес (номер) узла сети
+	sin.sin_family = AF_INET; // РѕРїСЂРµРґРµР»СЏРµС‚ РёСЃРїРѕР»СЊР·СѓРµРјС‹Р№ С„РѕСЂРјР°С‚ Р°РґСЂРµСЃР° (AF_INET - РґР»В¤ TCP/IP)
+	sin.sin_addr.s_addr = inet_addr(SERVERADDR);//INADDR_ANY; //Р°РґСЂРµСЃ (РЅРѕРјРµСЂ) СѓР·Р»Р° СЃРµС‚Рё
 
-	sin.sin_port = htons(PORT); // номер порта на узле сети
+	sin.sin_port = htons(PORT); // РЅРѕРјРµСЂ РїРѕСЂС‚Р° РЅР° СѓР·Р»Рµ СЃРµС‚Рё
 
 
 	addr_info.err = bind(addr_info.s, (LPSOCKADDR)&sin, sizeof(sin));
@@ -43,8 +43,8 @@ bool ConnectDetection(char *namedir) {
 
 	int fromlen = sizeof(from);
 	addr_info.s1 = accept(addr_info.s, (struct sockaddr*)&from, &fromlen);
-	printf("принято соединение от %s, порт %d\n", SERVERADDR, PORT);
-	printf("принято соединение от %s, порт %d\n", inet_ntoa(from.sin_addr), htons(from.sin_port));
+	printf("РїСЂРёРЅСЏС‚Рѕ СЃРѕРµРґРёРЅРµРЅРёРµ РѕС‚ %s, РїРѕСЂС‚ %d\n", SERVERADDR, PORT);
+	printf("РїСЂРёРЅСЏС‚Рѕ СЃРѕРµРґРёРЅРµРЅРёРµ РѕС‚ %s, РїРѕСЂС‚ %d\n", inet_ntoa(from.sin_addr), htons(from.sin_port));
 	return 0;
 }
 

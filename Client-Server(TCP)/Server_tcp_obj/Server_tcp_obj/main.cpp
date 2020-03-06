@@ -1,11 +1,11 @@
-#include "Header.h"
+п»ї#include "Header.h"
 
 int main(int argc, char* argv[])
 {
 	SOCKET sock_client;
 	ServerTcp client("192.168.0.16",4554,&sock_client);
 	client.Connect();
-	/////////////запрос->ответ сервера
+	/////////////Р·Р°РїСЂРѕСЃ->РѕС‚РІРµС‚ СЃРµСЂРІРµСЂР°
 
 	char command[] = "test done!";
 	char read_buffer[128];

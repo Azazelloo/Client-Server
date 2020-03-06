@@ -1,4 +1,4 @@
-%%%%client%%%%%
+п»ї%%%%client%%%%%
 % t=tcpip('192.168.0.16', 4555, 'NetworkRole', 'client');
 % fopen(t);
 % data='blablabla';
@@ -8,7 +8,7 @@
  clc
  clear
  close all
-% рабочее подключение UDP
+% СЂР°Р±РѕС‡РµРµ РїРѕРґРєР»СЋС‡РµРЅРёРµ UDP
  t=udp('192.168.0.16',4554);
  fopen(t);
  fwrite(t,'Connect!');
@@ -55,9 +55,9 @@ end
 fclose(t);
 
  
-%  рабочее подключение TCP/IP
+%  СЂР°Р±РѕС‡РµРµ РїРѕРґРєР»СЋС‡РµРЅРёРµ TCP/IP
 %  t=tcpip('192.168.0.16', 4555, 'NetworkRole', 'server'); 
-%  fopen(t); %соединение с клиентом
+%  fopen(t); %СЃРѕРµРґРёРЅРµРЅРёРµ СЃ РєР»РёРµРЅС‚РѕРј
 %  fprintf('Connected!');
 %  t.Timeout=3;
 

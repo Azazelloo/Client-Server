@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 class ClientTcp {
 	char* m_server_addr;

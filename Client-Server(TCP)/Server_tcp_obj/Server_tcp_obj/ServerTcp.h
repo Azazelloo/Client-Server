@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 class ServerTcp {
 	char* m_addres_server_machine;
 	int m_port;

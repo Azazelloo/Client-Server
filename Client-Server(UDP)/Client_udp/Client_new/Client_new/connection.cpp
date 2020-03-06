@@ -1,40 +1,40 @@
-#include "Header.h"
+п»ї#include "Header.h"
 
 int connectionClient(DEVICE* obj_dev)//const char* adress, int& port, SOCKET* my_sock)
 {
-	//////////Клиентская часть
+	//////////РљР»РёРµРЅС‚СЃРєР°СЏ С‡Р°СЃС‚СЊ
 	setlocale(LC_ALL, "Russian");
-	cout << "Ожидание соединения..." << endl;
+	cout << "РћР¶РёРґР°РЅРёРµ СЃРѕРµРґРёРЅРµРЅРёСЏ..." << endl;
 	WSADATA ws;
 	sockaddr_in server,client;
 	int ret_val;
 
-	if (FAILED(WSAStartup(MAKEWORD(2, 2), &ws))) //инициализация Winsock
+	if (FAILED(WSAStartup(MAKEWORD(2, 2), &ws))) //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Winsock
 	{
 		cout << "WSAStart error: " << WSAGetLastError() << endl;
 		WSACleanup();
 		return -1;
 	}
 	SOCKET clientSocket;
-	clientSocket= socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP); //создание сокета SOCK_STREAM - TCP, SOCK_DGRAM - UDP
-	if (clientSocket == INVALID_SOCKET) //создаем сокет
+	clientSocket= socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP); //СЃРѕР·РґР°РЅРёРµ СЃРѕРєРµС‚Р° SOCK_STREAM - TCP, SOCK_DGRAM - UDP
+	if (clientSocket == INVALID_SOCKET) //СЃРѕР·РґР°РµРј СЃРѕРєРµС‚
 	{
 		cout << "Socket error 1:" << WSAGetLastError() << endl;
 		WSACleanup();
 		return -1;
 	}
-	else //устанавливаем соединение
+	else //СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃРѕРµРґРёРЅРµРЅРёРµ
 	{
 		int OptVal = 1;
 		int OptLen = sizeof(int);
 		int rc = setsockopt(clientSocket, SOL_SOCKET, SO_REUSEADDR, (const char*)&OptVal, OptLen);
 
-		//запонлняем структуру для сервера
+		//Р·Р°РїРѕРЅР»РЅСЏРµРј СЃС‚СЂСѓРєС‚СѓСЂСѓ РґР»СЏ СЃРµСЂРІРµСЂР°
 		server.sin_family = AF_INET;
-		server.sin_port = htons(obj_dev->port); //переводим порт из обычного представления в TCP/IP
+		server.sin_port = htons(obj_dev->port); //РїРµСЂРµРІРѕРґРёРј РїРѕСЂС‚ РёР· РѕР±С‹С‡РЅРѕРіРѕ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ РІ TCP/IP
 		server.sin_addr.s_addr = inet_addr(obj_dev->adress);
 		
-		//запонлняем структуру для клиента
+		//Р·Р°РїРѕРЅР»РЅСЏРµРј СЃС‚СЂСѓРєС‚СѓСЂСѓ РґР»СЏ РєР»РёРµРЅС‚Р°
 		int client_len = sizeof(client);
 		client.sin_family = AF_INET;
 		client.sin_port = htons(obj_dev->port);
@@ -49,7 +49,7 @@ int connectionClient(DEVICE* obj_dev)//const char* adress, int& port, SOCKET* my
 			return 0;
 		}
 		stop
-			//////////////////////Обмен командами
+			//////////////////////РћР±РјРµРЅ РєРѕРјР°РЅРґР°РјРё
 		char mes[] = "client test string!";
 		cout << "Send message>>" << endl;
 			if (sendto(clientSocket, mes, sizeof(mes), 0, (sockaddr*)&server, sizeof(server)))

@@ -1,1 +1,1 @@
-#define massSize 512
+﻿#define massSize 512

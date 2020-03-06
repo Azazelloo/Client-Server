@@ -1,5 +1,5 @@
-////////////////////////////////////////////////////////////////
-//////Для установки соединения в качестве клиента///////////////
+п»ї////////////////////////////////////////////////////////////////
+//////Р”Р»СЏ СѓСЃС‚Р°РЅРѕРІРєРё СЃРѕРµРґРёРЅРµРЅРёСЏ РІ РєР°С‡РµСЃС‚РІРµ РєР»РёРµРЅС‚Р°///////////////
 ////////////////////////////////////////////////////////////////
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <WinSock2.h>
@@ -29,10 +29,10 @@ bool ConnectDetection(char *namedir) {
 	if (err == SOCKET_ERROR)
 	{
 		//printf("WSAStartup() failed: %ld\n", GetLastError());
-		std::cout << "Ошибка открытия драйвера!\n";
+		std::cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ РґСЂР°Р№РІРµСЂР°!\n";
 		return 1;
 	}
-	addr_info.s = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); // SOCK_STREAM - взаимодействие с установкой соединения, AF_INET - TCP/IP
+	addr_info.s = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); // SOCK_STREAM - РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ СЃ СѓСЃС‚Р°РЅРѕРІРєРѕР№ СЃРѕРµРґРёРЅРµРЅРёСЏ, AF_INET - TCP/IP
 	char SERVERADDR[20] = { 0 };
 	GetPrivateProfileStringA((LPCSTR) "IP", (LPCSTR) "1", (LPCSTR) "ERROR", (LPSTR)SERVERADDR, (DWORD) sizeof(SERVERADDR), (LPCSTR)namedir);
 	int PORT = GetPrivateProfileIntA((LPCSTR) "PORT", (LPCSTR) "1", 100, (LPCSTR)namedir);
@@ -45,7 +45,7 @@ bool ConnectDetection(char *namedir) {
 	while (err != 0) {
 		err = connect(addr_info.s, (struct sockaddr *)&anAddr, sizeof(struct sockaddr));
 	}
-	std::cout << "Соединение установлено!\n";
+	std::cout << "РЎРѕРµРґРёРЅРµРЅРёРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅРѕ!\n";
 	return 0;
 }
 

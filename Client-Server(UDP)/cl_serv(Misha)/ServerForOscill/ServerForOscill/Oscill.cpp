@@ -1,4 +1,4 @@
-#include "AgInfiniiVision.h"
+п»ї#include "AgInfiniiVision.h"
 #include <Windows.h> 
 #include <assert.h>
 #include "Header.h"
@@ -16,7 +16,7 @@ bool InitializationOscilloscope(char *namedir) {
 	ViBoolean reset = VI_FALSE;
 	status = AgInfiniiVision_InitWithOptions(resource, idQuery, reset, options, &session);
 	if (status)
-		return false; //ошибка инициализации осциллографа
+		return false; //РѕС€РёР±РєР° РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РѕСЃС†РёР»Р»РѕРіСЂР°С„Р°
 	assert(session != VI_NULL);
 	//AgInfiniiVision_SystemRecallState(session, 1);
 	//AgInfiniiVision_SystemSaveState(session, 1);
@@ -33,13 +33,13 @@ bool CloseOscilloscope() {
 
 bool OscillMsgExchange(char *RecvBuffer, char *SendBuffer) {
 	if (AgInfiniiVision_SystemWriteString(session, massSize, RecvBuffer)) {
-		//для сброса ошибки после отправки ошибочной команды
+		//РґР»СЏ СЃР±СЂРѕСЃР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РѕС‚РїСЂР°РІРєРё РѕС€РёР±РѕС‡РЅРѕР№ РєРѕРјР°РЅРґС‹
 		AgInfiniiVision_SystemWriteString(session, massSize, "*IDN?");
 		AgInfiniiVision_SystemReadString(session, massSize, reloadOscill);
 		return false;
 	}
 	if (AgInfiniiVision_SystemReadString(session, massSize, SendBuffer)) {
-		//для сброса ошибки после отправки ошибочной команды
+		//РґР»СЏ СЃР±СЂРѕСЃР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РѕС‚РїСЂР°РІРєРё РѕС€РёР±РѕС‡РЅРѕР№ РєРѕРјР°РЅРґС‹
 		AgInfiniiVision_SystemWriteString(session, massSize, "*IDN?");
 		AgInfiniiVision_SystemReadString(session, massSize, reloadOscill);
 		return false;
@@ -50,7 +50,7 @@ bool OscillMsgExchange(char *RecvBuffer, char *SendBuffer) {
 bool OscillMsgSend(char *RecvBuffer) {
 	if (AgInfiniiVision_SystemWriteString(session, massSize, RecvBuffer))
 		return false;
-	//для сброса ошибки после отправки ошибочной команды
+	//РґР»СЏ СЃР±СЂРѕСЃР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РѕС‚РїСЂР°РІРєРё РѕС€РёР±РѕС‡РЅРѕР№ РєРѕРјР°РЅРґС‹
 	AgInfiniiVision_SystemWriteString(session, massSize, "*IDN?");
 	AgInfiniiVision_SystemReadString(session, massSize, reloadOscill);
 	return true;

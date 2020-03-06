@@ -1,26 +1,26 @@
-#include "Header.h"
+п»ї#include "Header.h"
 
-DEVICE** devices_array = new DEVICE*[COUNT_DEVICE];//выделяем память под массив устройств
+DEVICE** devices_array = new DEVICE*[COUNT_DEVICE];//РІС‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ РјР°СЃСЃРёРІ СѓСЃС‚СЂРѕР№СЃС‚РІ
 
 SOCKET sp_sock, gen_sock, sa_sock,misha_sock;
-SOCKET* sock_array[COUNT_DEVICE] = { &misha_sock }; //массив сокетов 
+SOCKET* sock_array[COUNT_DEVICE] = { &misha_sock }; //РјР°СЃСЃРёРІ СЃРѕРєРµС‚РѕРІ 
 
 const char* name_dev_array[COUNT_DEVICE] = {"misha" };
 
 int main(int argc, char* argv[])
 {
-	////////Читаем ini файл
+	////////Р§РёС‚Р°РµРј ini С„Р°Р№Р»
 	char buf[128];
 	for (int i = 0; i < COUNT_DEVICE; i++)
 	{
-		devices_array[i] = new DEVICE;//выделяем память под текущее устройство
+		devices_array[i] = new DEVICE;//РІС‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ С‚РµРєСѓС‰РµРµ СѓСЃС‚СЂРѕР№СЃС‚РІРѕ
 		stop
-			GetPrivateProfileString(name_dev_array[i], "adress", "Error!", buf, sizeof(buf), "../settings/conf.ini"); //берем адрес прибора, заносим в структуру
-		devices_array[i]->adress = new char[strlen(buf) + 1];//выделяем память для копирования адреса из буфера в структуру
+			GetPrivateProfileString(name_dev_array[i], "adress", "Error!", buf, sizeof(buf), "../settings/conf.ini"); //Р±РµСЂРµРј Р°РґСЂРµСЃ РїСЂРёР±РѕСЂР°, Р·Р°РЅРѕСЃРёРј РІ СЃС‚СЂСѓРєС‚СѓСЂСѓ
+		devices_array[i]->adress = new char[strlen(buf) + 1];//РІС‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РґР»СЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ Р°РґСЂРµСЃР° РёР· Р±СѓС„РµСЂР° РІ СЃС‚СЂСѓРєС‚СѓСЂСѓ
 		strcpy(devices_array[i]->adress, buf);
 
-		devices_array[i]->port = GetPrivateProfileInt(name_dev_array[i], "port", -1, "../settings/conf.ini"); //берем порт прибора, заносим в структуру
-		devices_array[i]->sock_dev = sock_array[i]; //берем сокет прибора, заносим в структуру
+		devices_array[i]->port = GetPrivateProfileInt(name_dev_array[i], "port", -1, "../settings/conf.ini"); //Р±РµСЂРµРј РїРѕСЂС‚ РїСЂРёР±РѕСЂР°, Р·Р°РЅРѕСЃРёРј РІ СЃС‚СЂСѓРєС‚СѓСЂСѓ
+		devices_array[i]->sock_dev = sock_array[i]; //Р±РµСЂРµРј СЃРѕРєРµС‚ РїСЂРёР±РѕСЂР°, Р·Р°РЅРѕСЃРёРј РІ СЃС‚СЂСѓРєС‚СѓСЂСѓ
 		stop
 	}
 	////////
@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
 		res = connectionClient(devices_array[0]);
 	}
 
-	//посылаем сообщение на сервер
+	//РїРѕСЃС‹Р»Р°РµРј СЃРѕРѕР±С‰РµРЅРёРµ РЅР° СЃРµСЂРІРµСЂ
 	/*char* command = new char[strlen("Exit")+1];
 	char read_buffer[128];
 	while(strcmp(command,"exit"))
@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 		if (send(misha_sock, command, strlen(command), 0))
 		{
 			cout << "Command has been sent!" << endl;
-			//ожидаем ответ от сервера
+			//РѕР¶РёРґР°РµРј РѕС‚РІРµС‚ РѕС‚ СЃРµСЂРІРµСЂР°
 			int r_buf = recv(misha_sock, read_buffer, sizeof(read_buffer), 0);
 			cout << "Server: ";
 			for (int i = 0; i < r_buf; i++)
@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
 		}
 	}*/
 	////////
-	//Принимаем сообщение с сервера
+	//РџСЂРёРЅРёРјР°РµРј СЃРѕРѕР±С‰РµРЅРёРµ СЃ СЃРµСЂРІРµСЂР°
 	/*char read_buffer[128];
 	cout << "In_message:";
 	int res2=recv(misha_sock, read_buffer, sizeof(read_buffer), 0);
@@ -69,12 +69,12 @@ int main(int argc, char* argv[])
 	stop 
 	system("pause");
 	////////
-	////////Закрываем сокеты
+	////////Р—Р°РєСЂС‹РІР°РµРј СЃРѕРєРµС‚С‹
 	for (int i = 0; i < COUNT_DEVICE; i++)
 	{
 		closesocket(*sock_array[i]);
 	}
-	////////чистка памяти
+	////////С‡РёСЃС‚РєР° РїР°РјСЏС‚Рё
 	for (int i = 0; i < COUNT_DEVICE; i++)
 	{
 		delete[] devices_array[i];

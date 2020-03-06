@@ -1,4 +1,4 @@
-#pragma comment(lib, "ws2_32.lib")
+п»ї#pragma comment(lib, "ws2_32.lib")
 #pragma comment(lib, "AgInfiniiVision.lib")
 
 #include <WinSock2.h>
@@ -13,51 +13,51 @@ void GetDir();
 bool IsQuestion(char *RecvBuffer);
 
 int main() {
-	char RecvBuffer[massSize] = { 0 }; //для принятия сообщения от клинета
-	char SendBuffer[massSize] = { 0 }; //для отправки сообщения от клинету
+	char RecvBuffer[massSize] = { 0 }; //РґР»СЏ РїСЂРёРЅСЏС‚РёСЏ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚ РєР»РёРЅРµС‚Р°
+	char SendBuffer[massSize] = { 0 }; //РґР»СЏ РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚ РєР»РёРЅРµС‚Сѓ
 	GetDir();
 	setlocale(LC_ALL, "Russian");
 
 	//if (!InitializationOscilloscope(namedir)) {
-	//	printf("Ошибка при инициализации осциллографа\n");
+	//	printf("РћС€РёР±РєР° РїСЂРё РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РѕСЃС†РёР»Р»РѕРіСЂР°С„Р°\n");
 	//	getchar();
 	//	return 1;
 	//}
 
-	printf("Ожидание соединения...\n");
+	printf("РћР¶РёРґР°РЅРёРµ СЃРѕРµРґРёРЅРµРЅРёСЏ...\n");
 	ConnectDetection(namedir);
 
-	MessageReceiving(RecvBuffer); //ожидание сообщения от клиента
+	MessageReceiving(RecvBuffer); //РѕР¶РёРґР°РЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚ РєР»РёРµРЅС‚Р°
 	while (strcmp(RecvBuffer, "CLCONNECT")) {
 		if (IsQuestion(RecvBuffer)) {
-			if (!OscillMsgExchange(RecvBuffer, SendBuffer)) { //обмен сообщениями с осциллографом
-				std::cout << "Отправлено на осциллограф: " << RecvBuffer << "\n";
-				std::cout << "Принято от осциллографа: " << "Ошибка в команде" << "\n";
-				MessageSending("Ошибка в команде"); //отправка сообщения клиенту
+			if (!OscillMsgExchange(RecvBuffer, SendBuffer)) { //РѕР±РјРµРЅ СЃРѕРѕР±С‰РµРЅРёСЏРјРё СЃ РѕСЃС†РёР»Р»РѕРіСЂР°С„РѕРј
+				std::cout << "РћС‚РїСЂР°РІР»РµРЅРѕ РЅР° РѕСЃС†РёР»Р»РѕРіСЂР°С„: " << RecvBuffer << "\n";
+				std::cout << "РџСЂРёРЅСЏС‚Рѕ РѕС‚ РѕСЃС†РёР»Р»РѕРіСЂР°С„Р°: " << "РћС€РёР±РєР° РІ РєРѕРјР°РЅРґРµ" << "\n";
+				MessageSending("РћС€РёР±РєР° РІ РєРѕРјР°РЅРґРµ"); //РѕС‚РїСЂР°РІРєР° СЃРѕРѕР±С‰РµРЅРёСЏ РєР»РёРµРЅС‚Сѓ
 			}
 			else {
-				std::cout << "Отправлено на осциллограф: " << RecvBuffer << "\n";
-				std::cout << "Принято от осциллографа: " << SendBuffer << "\n";
-				MessageSending(SendBuffer); //отправка сообщения клиенту
+				std::cout << "РћС‚РїСЂР°РІР»РµРЅРѕ РЅР° РѕСЃС†РёР»Р»РѕРіСЂР°С„: " << RecvBuffer << "\n";
+				std::cout << "РџСЂРёРЅСЏС‚Рѕ РѕС‚ РѕСЃС†РёР»Р»РѕРіСЂР°С„Р°: " << SendBuffer << "\n";
+				MessageSending(SendBuffer); //РѕС‚РїСЂР°РІРєР° СЃРѕРѕР±С‰РµРЅРёСЏ РєР»РёРµРЅС‚Сѓ
 			}
 		}
 		else
-			if (!OscillMsgSend(RecvBuffer)) //отправка сообщения осциллографу
-				std::cout << "Отправлено на осциллограф: " << RecvBuffer << "	!!!Ошибка в команде!!!\n";
+			if (!OscillMsgSend(RecvBuffer)) //РѕС‚РїСЂР°РІРєР° СЃРѕРѕР±С‰РµРЅРёСЏ РѕСЃС†РёР»Р»РѕРіСЂР°С„Сѓ
+				std::cout << "РћС‚РїСЂР°РІР»РµРЅРѕ РЅР° РѕСЃС†РёР»Р»РѕРіСЂР°С„: " << RecvBuffer << "	!!!РћС€РёР±РєР° РІ РєРѕРјР°РЅРґРµ!!!\n";
 			else
-				std::cout << "Отправлено на осциллограф: " << RecvBuffer << "\n";
+				std::cout << "РћС‚РїСЂР°РІР»РµРЅРѕ РЅР° РѕСЃС†РёР»Р»РѕРіСЂР°С„: " << RecvBuffer << "\n";
 		
 		memset(RecvBuffer, 0, sizeof(RecvBuffer));
 		memset(SendBuffer, 0, sizeof(SendBuffer));
 		MessageReceiving(RecvBuffer);
 	}
 	ConnectClose();
-	std::cout << "Соединение закрыто\n";
+	std::cout << "РЎРѕРµРґРёРЅРµРЅРёРµ Р·Р°РєСЂС‹С‚Рѕ\n";
 
 	return 0;
 }
 
-void GetDir() { //Запись директории ini-файла
+void GetDir() { //Р—Р°РїРёСЃСЊ РґРёСЂРµРєС‚РѕСЂРёРё ini-С„Р°Р№Р»Р°
 	char name[massSize*2] = { 0 };
 
 	int j = GetModuleFileName(GetModuleHandle(NULL), (LPWSTR)name, massSize) - 1;
@@ -77,7 +77,7 @@ void GetDir() { //Запись директории ini-файла
 	}
 }
 
-bool IsQuestion(char *RecvBuffer) { //устанавливает, есть ли в сообщении знак вопроса
+bool IsQuestion(char *RecvBuffer) { //СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚, РµСЃС‚СЊ Р»Рё РІ СЃРѕРѕР±С‰РµРЅРёРё Р·РЅР°Рє РІРѕРїСЂРѕСЃР°
 	for (int i = 0; i <= massSize; i++)
 		if (RecvBuffer[i] == '?')
 			return true;
